@@ -1,0 +1,19 @@
+if not loop.is_running():
+            warnings.warn("Creating a client session outside of coroutine is "
+                          "a very dangerous idea", ResourceWarning,
+                          stacklevel=2)
+            context = {'client_session': self,
+                       'message': 'Creating a client session outside '
+                       'of coroutine'}
+            if self._source_traceback is not None:
+                context['source_traceback'] = self._source_traceback
+            loop.call_exception_handler(context)
+
+			
+			Explicit session lifetime is better than implicit one.
+If you initialize a session on demand -- when do you finalize it? Lazy cleanup scares me.
+
+The change is made for forcing the rule: lifetime of async objects should be shorter than event loop run time.
+
+Right now aiohttp doesn't raise exception but a warning.
+I guarantee this behavior will be not changed for 1.5 years at least.
