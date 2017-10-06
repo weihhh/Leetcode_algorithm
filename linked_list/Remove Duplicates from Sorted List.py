@@ -29,3 +29,18 @@ class Solution(object):
             previous=head
             head=head.next
         return result
+#上面的方法可行，但是针对的是未排序和排序状况都行，而本题是已经排好序的，所以可以更加简单，重复的一定排在一起
+public ListNode deleteDuplicates2(ListNode head) {
+        if(head == null || head.next == null) return head;
+        
+        ListNode list = head;
+         while(list.next != null) 
+         {
+             if (list.val == list.next.val)
+                 list.next = list.next.next;
+             else 
+                 list = list.next;
+         }
+
+         return head;
+    }
