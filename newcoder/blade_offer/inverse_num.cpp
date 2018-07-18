@@ -28,6 +28,7 @@ public:
             copy[indexcopy--]=data[j];
         return left+right+count;
     }
+    //归并排序统计逆序对，确定逆序对的过程中确定了大小，进行排序
     int InversePairs(vector<int> data) {
         if(data.empty())
             return 0;

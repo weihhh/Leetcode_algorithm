@@ -18,6 +18,7 @@ public:
 class Solution {
 public:
     int  NumberOf1(int n) {
+        //补码表示负数，所有位取反再加一
         int count=0;
         while(n){
             ++count;

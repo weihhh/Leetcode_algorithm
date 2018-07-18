@@ -6,6 +6,7 @@ public:
         string::iterator walker=str.begin();
         std::vector<int> hash_map(256,0);//8位char，256种可能,0初值
         while(walker!=str.end()){
+            //char可以直接当作unsigned int
             hash_map[*walker]+=1;
             ++walker;
         }

@@ -44,6 +44,7 @@ public:
             start=middle_index+1;
         return getLastK(data,start,end,target);
     }
+    //统计一个数字再排序数组中的次数
     int GetNumberOfK(vector<int> data ,int k) {
         int num=0;
         int length=data.size();

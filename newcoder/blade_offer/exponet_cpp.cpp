@@ -38,6 +38,7 @@ public:
             return 1.0;
         if(exponent==1)
             return base;
+        //想当于二分法，A的平方，算出A即可，而不用A*base*abse。。。z这样一直算
         double result=power_unsigned_best(base,exponent>>1);
         result*=result;
         if(exponent&0x1==1)//二进制最后 一位为1，则为奇数,需要多乘以次base

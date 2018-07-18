@@ -67,7 +67,7 @@ public:
         for(int i=0;i<=index;++i)
             result.push_back(input[i]);
         */
-        multiset<int ,greater<int>> greater_set;
+        multiset<int ,greater<int>> greater_set;//最大堆，
         multiset<int ,greater<int>>::iterator setIterator;
         std::vector<int>::iterator walker=input.begin();
         for(;walker!=input.end();++walker){
@@ -76,7 +76,7 @@ public:
             }
             else{
                 setIterator=greater_set.begin();//得到指向最大值的迭代器
-                if(*setIterator>*walker){
+                if(*setIterator>*walker){//替换其中最大的，时刻保持其中k个最小数
                     greater_set.erase(setIterator);
                     greater_set.insert(*walker);
                 }

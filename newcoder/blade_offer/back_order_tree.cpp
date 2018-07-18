@@ -7,31 +7,31 @@ using namespace std;
 class Solution {
 public:
     bool help(vector<int>::iterator begin,vector<int>::iterator end,vector<int> &v){
-        cout<<"here"<<endl;
         if(begin==end)
             return true;
         int root=v.back();
         --end;
         vector<int>::iterator tmp1=begin;
         vector<int>::iterator tmp2;
+        //因为后续遍历除去根节点后分为两段，左子树段和右子树段，左子树段元素均小于根节点
         while(tmp1!=end&&(*tmp1<root)){
             ++tmp1;
         }
-        cout<<"here"<<endl;
+        //此时tmp1指向右子树段第一个或者end
         tmp2=tmp1;
         while(tmp2!=end){
             if(*tmp2<root)
                 return false;
             ++tmp2;
         }
-
+        //递归验证子段
         bool lresult=help(begin,tmp1,v);
         bool rresult=help(tmp1,end,v);
         if(lresult&&rresult)
             return true;
         return false;
     }
-
+    //判断一个数组是否为二叉搜索树的后续遍历结果
     bool VerifySquenceOfBST(vector<int> sequence) {
         if(sequence.empty())
             return false;
